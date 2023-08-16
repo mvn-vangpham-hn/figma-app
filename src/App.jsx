@@ -14,7 +14,7 @@ const options = {
 };
 
 const headersFigma = {
-  "X-Figma-Token": "figd_DmnxtMzIPcTrvcs5_LBvMv-bWPCR5_gMzRH2cvse",
+  "X-Figma-Token": "xxx",
 };
 
 const nodeIdsGetImage = "1:260";
