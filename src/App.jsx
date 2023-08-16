@@ -14,10 +14,12 @@ const options = {
 };
 
 const headersFigma = {
-  "X-Figma-Token": "figd_17IcD2djy7CBjtizRE9B7JAuwvDCZUKicZrMBEF4",
+  "X-Figma-Token": "figd_DmnxtMzIPcTrvcs5_LBvMv-bWPCR5_gMzRH2cvse",
 };
 
-const keyFileFigma = "1TCHOvSBpbuAzFAVSjLBVR";
+const nodeIdsGetImage = "1:260";
+
+const keyFileFigma = "UzVUgOMzcG2UhqQ4Csvw5P";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -32,6 +34,7 @@ const App = () => {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log("res12", res);
         setData(res.document);
       })
       .finally(() => setLoading(false));
@@ -39,13 +42,16 @@ const App = () => {
 
   const getImageFigma = useCallback(() => {
     setLoadingImagePreview(true);
-    fetch(`https://api.figma.com/v1/images/${keyFileFigma}?ids=1:260`, {
-      method: "GET",
-      headers: headersFigma,
-    })
+    fetch(
+      `https://api.figma.com/v1/images/${keyFileFigma}?ids=${nodeIdsGetImage}`,
+      {
+        method: "GET",
+        headers: headersFigma,
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
-        setImagePreview(res.images["1:260"]);
+        setImagePreview(res.images[nodeIdsGetImage]);
       })
       .finally(() => setLoadingImagePreview(false));
   }, []);
